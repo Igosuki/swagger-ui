@@ -1,7 +1,7 @@
 
     <ul class='operations' >
       <li class='{{httpMethod}} operation' id='{{resourceName}}_{{nickname}}_{{httpMethod}}_{{number}}'>
-            <div class='heading'>
+            <div class='heading {{#if deprecatedSince}}deprecated{{/if}}'>
                 <h3>
                   <span class='http_method'>
                     <a href='#!/{{resourceName}}/{{nickname}}_{{httpMethod}}_{{number}}' class="toggleOperation">{{httpMethod}}</a>

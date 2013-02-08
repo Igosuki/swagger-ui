@@ -567,6 +567,14 @@ body ul#resources li.resource:hover div.heading ul.options li a, body ul#resourc
     color: #555555;
 }
 
+body ul#resources li.resource ul.endpoints li.endpoint ul.operations div.deprecated {
+    opacity: 0.5;
+}
+
+body ul#resources li.resource ul.endpoints li.endpoint ul.operations div.deprecated span {
+    text-decoration: line-through;
+}
+
 body ul#resources li.resource ul.endpoints li.endpoint ul.operations li.operation.get {
     float: none;
     clear: both;
