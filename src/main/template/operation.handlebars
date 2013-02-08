@@ -17,6 +17,17 @@
                 </ul>
             </div>
             <div class='content' id='{{resourceName}}_{{nickname}}_{{httpMethod}}_{{number}}_content' style='display:none'>
+                {{#if version.since}} 
+                    <p>This operation has been introduced in version {{version.since}}.</p>
+                {{/if}}
+                {{#if version.deprecated}}
+                    <p>
+                        This operation is deprecated since {{version.deprecatedSince}} 
+                        {{#if version.replacedBy}} 
+                            and has been replaced by <a href='#!/{{version.replacedBy}}' 
+                        {{/if}}
+                    </p>
+                {{/if}}
                 {{#if notes}}
                 <h4>Implementation Notes</h4>
                 <p>{{{notes}}}</p>
