@@ -44,6 +44,7 @@ class SwaggerUi extends Backbone.Router
     @mainView?.clear()
     @headerView.update(@options.discoveryUrl, @options.apiKey)
     @api = new SwaggerApi(@options)
+    
 
   # This is bound to success handler for SwaggerApi
   #  so it gets called when SwaggerApi completes loading

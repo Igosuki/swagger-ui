@@ -1,7 +1,7 @@
 
     <ul class='operations' >
       <li class='{{httpMethod}} operation' id='{{resourceName}}_{{nickname}}_{{httpMethod}}_{{number}}'>
-            <div class='heading {{#if deprecatedSince}}deprecated{{/if}}'>
+            <div class='heading {{#if version.deprecatedSince}}deprecated{{/if}}'>
                 <h3>
                   <span class='http_method'>
                     <a href='#!/{{resourceName}}/{{nickname}}_{{httpMethod}}_{{number}}' class="toggleOperation">{{httpMethod}}</a>
@@ -17,16 +17,27 @@
                 </ul>
             </div>
             <div class='content' id='{{resourceName}}_{{nickname}}_{{httpMethod}}_{{number}}_content' style='display:none'>
-                {{#if version.since}} 
-                    <p>This operation has been introduced in version {{version.since}}.</p>
-                {{/if}}
-                {{#if version.deprecated}}
-                    <p>
-                        This operation is deprecated since {{version.deprecatedSince}} 
-                        {{#if version.replacedBy}} 
-                            and has been replaced by <a href='#!/{{version.replacedBy}}' 
-                        {{/if}}
-                    </p>
+                {{#if version}}    
+                    <h4>Version Notes</h4>
+                    {{#if version.since}} 
+                        <p>Introduced in {{version.since}}.</p>
+                    {{/if}}
+                    {{#if version.deprecatedSince}}
+                        <p>
+                            Deprecated since {{version.deprecatedSince}} 
+                            {{#if version.replacedBy}} 
+                                and has been replaced by <a href='#!/{{version.replacedBy}}' 
+                            {{/if}}
+                        </p>
+                    {{/if}}
+                {{/if}} 
+                {{#if types}}
+                    <h4>Operation types</h4>    
+                    <ul>
+                    {{#each types}}
+                        <li>{{this}}</li>
+                    {{/each}}
+                    </ul>
                 {{/if}}
                 {{#if notes}}
                 <h4>Implementation Notes</h4>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Swagger UI</title>
+    <title>Libon Documentation</title>
     <link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'/>
     <link href='css/hightlight.default.css' media='screen' rel='stylesheet' type='text/css'/>
     <link href='css/screen.css' media='screen' rel='stylesheet' type='text/css'/>
@@ -18,7 +18,7 @@
 
     <style type="text/css">
         .swagger-ui-wrap {
-            max-width: 960px;
+            max-width: 1600px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -40,12 +40,56 @@
         .message-fail {
             color: #cc0000;
         }
+
+        .header-text {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 20px 0 20px 40px;
+            color: white;
+        }
+        .header-text-gray {
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 20px 0 20px 40px;
+            color: #999999;
+        }
+        form#api_selector div {
+            margin-left: 10px;
+            float: left;
+        }
+        .angry {
+           display: block;
+            height: 24px; 
+            background-repeat: no-repeat;
+            background-position: left 0px;
+            padding-top: 0px;
+        }
+        ul#version-list {
+            background-color: #89bf04;
+        }
+        .angry-black {
+            background-image: url(images/angry_black.png);
+        }
+        .angry-yellow {
+            background-image: url(images/angry_yellow.png);
+        }
+        .angry-blue {
+            background-image: url(images/angry_blue.png);
+        }
+        .angry-red {
+            background-image: url(images/angry_red.png);
+        }        
+        ul#version-list li:hover {
+            cursor: pointer;
+        }
     </style>
 
     <script type="text/javascript">
         $(function () {
             window.swaggerUi = new SwaggerUi({
-                discoveryUrl:"http://localhost/~geps/api/doc.json",
+                discoveryUrl:"http://localhost/~geps/api/2.17.0-SNAPSHOT/doc.json",
                 apiKey:"",
                 dom_id:"swagger-ui-container",
                 supportHeaderParams: false,
@@ -64,7 +108,10 @@
                         console.log(data);
                     }
                 },
-                docExpansion: "none"
+                docExpansion: "none",
+                targets: [
+                
+                ]
             });
 
             window.swaggerUi.load();
@@ -76,14 +123,12 @@
 <body>
 <div id='header'>
     <div class="swagger-ui-wrap">
-        <a id="logo" href="http://swagger.wordnik.com">swagger</a>
-
-        <form id='api_selector'>
-            <div class='input icon-btn'>
-                <img id="show-pet-store-icon" src="images/pet_store_api.png" title="Show Swagger Petstore Example Apis">
-            </div>
-            <div class='input icon-btn'>
-                <img id="show-wordnik-dev-icon" src="images/wordnik_api.png" title="Show Wordnik Developer Apis">
+        <a id="logo" href="http://libon.com">libon-api <span id="logoversion">2.17.0</span></a>
+        <form id='api_selector'>  
+            <div id="version-pick-container" class='input'>
+                <span id="version-pick" class="header-text">Pick a version...</span>
+                <ul id="version-list" style="display: none;">
+                </ul>
             </div>
             <div class='input'><input placeholder="http://example.com/api" id="input_baseUrl" name="baseUrl"
                                       type="text"/></div>

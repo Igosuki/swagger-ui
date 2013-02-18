@@ -1,0 +1,17 @@
+<div class='heading'>
+    <h2>
+        <a href='#'>Servers statuses</a>
+    </h2>    
+    <form>
+        <div class="targets-container" >
+            {{#each targets}}
+                <div id="show-{{name}}-icon" class='icon-btn'>
+                    <span  class="angry angry-{{bird}} header-text-gray">{{name}}:<a class="red-warning" target="_blank" href="{{versionUrl}}">unreachable</a> </span>
+                    {{#if enabled}} 
+                        <input type="radio" />  
+                    {{/if}}
+                </div>
+            {{/each}}
+        </div>
+    </form>
+</div>

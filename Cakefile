@@ -12,6 +12,7 @@ sourceFiles  = [
   'view/ParameterView'
   'view/SignatureView'
   'view/ContentTypeView'
+  'view/ServerView'
 ]
 
 

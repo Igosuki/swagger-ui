@@ -5,6 +5,9 @@ class MainView extends Backbone.View
     # Render the outer container for resources
     $(@el).html(Handlebars.templates.main(@model))
 
+    @serverView = new ServerView({model: @model})
+    $('#servers').append @serverView.render().el
+    @serverView.updateServerStatuses()
     # Render each resource
     @addResource resource for resource in @model.resourcesArray
     @

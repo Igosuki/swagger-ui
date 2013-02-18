@@ -1596,3 +1596,27 @@ pre code {
   margin: 0;
   padding: 15px 0 5px 0px;
 }
+
+.heading h2 a {
+    color: #999999;
+}
+.targets-container {
+    border-bottom: 1px solid #dddddd;
+}
+.targets-container div {
+    float: left;
+    margin: 10px 10px 0 0;
+}
+.targets-container div span {
+    
+}
+.red-warning {
+    font-style: bold;
+    text-decoration: none;
+    color: red;
+}
+.green-warning {
+    font-style: bold;
+    text-decoration: none;
+    color: green;
+}   

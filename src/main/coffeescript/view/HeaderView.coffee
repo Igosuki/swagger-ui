@@ -1,26 +1,34 @@
 class HeaderView extends Backbone.View
   events: {
-    'click #show-pet-store-icon'    : 'showPetStore'
-    'click #show-wordnik-dev-icon'  : 'showWordnikDev'
+    'mouseenter #version-pick' : 'toggleVersionPicker'
+    'click #version-pick' : 'toggleVersionPicker'
+    'mouseleave #version-list' : 'hideVersionPicker'
+    'click .version-pick' : 'showNewEnv'
     'click #explore'                : 'showCustom'
     'keyup #input_baseUrl'          : 'showCustomOnKeyup'
     'keyup #input_apiKey'           : 'showCustomOnKeyup'
   }
 
   initialize: ->
+    getVersionsFromApacheIndex("http://localhost/~geps/api", 
+      (versions) -> $("#version-list").append $("<li class='version-pick header-text'>"+version.replace(/\//g, "")+"</li>") for version in versions 
+    )
+    
+  toggleVersionPicker: (e) ->
+    $("#version-list").slideToggle()
 
+  hideVersionPicker: (e) ->
+    $("#version-list").slideUp()
 
-  showPetStore: (e) ->
+  showNewEnv: (e) ->
+    newVersion = e.currentTarget.textContent
     @trigger(
       'update-swagger-ui'
-      {discoveryUrl:"http://petstore.swagger.wordnik.com/api/api-docs.json", apiKey:"special-key"}
+      {discoveryUrl:"http://localhost/~geps/api/" + newVersion + "/doc.json", apiKey:""}
     )
+    @updateVersion(newVersion)
 
-  showWordnikDev: (e) ->
-    @trigger(
-      'update-swagger-ui'
-      {discoveryUrl:"http://api.wordnik.com/v4/resources.json", apiKey:""}
-    )
+    ###e.currentTarget.attributes.id.value.replace(/show-([a-z]+)-icon/g, "$1")###
 
   showCustomOnKeyup: (e) ->
     @showCustom() if e.keyCode is 13
@@ -36,3 +44,7 @@ class HeaderView extends Backbone.View
     $('#input_baseUrl').val url
     $('#input_apiKey').val apiKey
     @trigger 'update-swagger-ui', {discoveryUrl:url, apiKey:apiKey} if trigger
+
+
+  updateVersion: (version) ->
+    $('#logoversion').text version
